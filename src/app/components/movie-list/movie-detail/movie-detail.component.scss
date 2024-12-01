@@ -1,0 +1,25 @@
+.movie-detail .backdrop {
+    position: relative;
+    background-size: cover;
+    background-position: center;
+    height: 400px;
+    color: white;
+    display: flex;
+    align-items: flex-end;
+}
+
+.title-overlay {
+    padding: 20px;
+    background: rgba(0, 0, 0, 0.5);
+    width: 100%;
+}
+
+.title-overlay h1 {
+    font-size: 3rem;
+    margin: 0;
+}
+
+.title-overlay p {
+    font-size: 1.2rem;
+    margin: 5px 0 0;
+}

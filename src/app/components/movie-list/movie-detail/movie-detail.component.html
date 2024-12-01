@@ -1,0 +1,83 @@
+<div class="movie-detail container">
+    <div class="backdrop" [style.backgroundImage]="'url(https://image.tmdb.org/t/p/w500'+ moviedetail.image.backdrops[1].file_path + ')'">
+        <div class="title-overlay">
+            <h1>{{ moviedetail.title }}</h1>
+            <p>{{ moviedetail.tagline }}</p>
+        </div>
+    </div>
+
+    <div class="detail-content row mt-5">
+        <div class="left-column col-sm-6 col-md-6 col-lg-6">
+            <img [src]="'https://image.tmdb.org/t/p/w500' + moviedetail.poster_path" alt="{{ moviedetail.title }}" class="object-fit w-100" />
+
+        </div>
+        <div class="right-column col-sm-6 col-xl-6">
+            <p><strong>Genres:</strong> {{ getgenername() }}</p>
+            <p><strong>Release Date:</strong> {{ moviedetail.release_date }}</p>
+            <p><strong>Rating:</strong> ⭐ {{ moviedetail.vote_average.toFixed(1) }}/10</p>
+            <h2>Synopsis</h2>
+            <p>{{ moviedetail.overview }}</p>
+            <!-- <h3>Cast</h3>
+            <p>{{ moviedetail.cast.join(', ') }}</p> -->
+            <p></p>
+            <div class="buttons">
+                <button class="trailer-btn">🎥 Watch Trailer</button>
+                <button class="fav-btn">❤️ Add to Favorites</button>
+            </div>
+            <div>
+
+            </div>
+        </div>
+    </div>
+
+
+    <div class="row">
+        <div class="mt-4">
+            <h3 class="fw-bold">Videos </h3>
+        </div>
+
+        <div class="col-xl-4 col-sm-12 mt-3 mb-4" *ngFor="let url of sanitizedUrls">
+            <iframe [src]="url" frameborder="0" class="object-fit-cover rounded-1 video" allow="accelerometer; autoplay; clipboard-write; encrypted-media;  gyroscope; picture-in-picture" allowfullscreen></iframe>
+        </div>
+
+    </div>
+
+
+    <div class="row">
+        <div class="mt-4">
+            <h3 class="fw-bold">Cast</h3>
+        </div>
+
+        <div class="col-xl-6 col-sm-12 d-flex" *ngFor="let credits of moviedetail.credit['cast']">
+            <div class="w-25 h-75 border border-4 border-white rounded-top-circle rounded-end-circle bg-danger shadow">
+                <img [src]="credits.profile_path ? 'https://image.tmdb.org/t/p/w500'+credits.profile_path: 'dummy-face.jpg'" class="w-100 h-100 object-fit-cover border- rounded-circle" alt="">
+            </div>
+            <div class="ps-2 pt-5">
+                <h3>{{credits.name}}</h3>
+                <p class=""><em>{{credits.character}}</em></p>
+            </div>
+        </div>
+    </div>
+
+</div>
+<!--<div class="container">
+    <div class="row m-0">
+        <div class="col-12">
+            <h2>
+
+                {{moviedetail.original_title}}
+            </h2>
+        </div>
+        <div class="col-6">
+            <img [src]="'https://image.tmdb.org/t/p/w500' + moviedetail.poster_path" [alt]="moviedetail.title" class="w-100 h-100" *ngIf="moviedetail.poster_path" />
+        </div>
+
+        <div class="col-6">
+            <div>
+
+            </div>
+        </div>
+
+    </div>
+
+</div> -->

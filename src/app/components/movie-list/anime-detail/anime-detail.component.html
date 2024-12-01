@@ -1,0 +1,19 @@
+<div class="container">
+    <div class="row">
+        <div class="backdrop" [style.backgroundImage]="'url(animedetail.images.jpg.large_image_url)'">
+            <div class="title-overlay">
+                <h1>{{ animedetail.title_english }}</h1>
+            </div>
+        </div>
+    </div>
+    <div class=" row mt-5">
+        <div class="col-md-6 mt-5">
+            <img [src]="animedetail.images.jpg.large_image_url" alt="">
+        </div>
+        <div class="col-md-6 mt-5">
+            <p><strong>Genres:</strong> {{ getgener() }}</p>
+            <h4><strong>Synopsis:</strong></h4>
+            <p [innerHTML]="animedetail.synopsis | sanitizerHtml: 250"></p>
+        </div>
+    </div>
+</div>

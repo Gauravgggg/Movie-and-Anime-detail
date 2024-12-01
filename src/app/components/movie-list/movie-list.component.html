@@ -1,0 +1,18 @@
+<div class="container">
+    <div class="search-container">
+        <input type="text" [(ngModel)]="searchQuery" (input)="onSearch()" placeholder="Search for movies..." class="search-input" *ngIf="!animeboolean" />
+        <input type="text" [(ngModel)]="searchQuery" (input)="onSearch()" placeholder="Search for anime..." class="search-input" *ngIf="animeboolean" />
+    </div>
+    <div class="d-flex justify-content-center text-center">
+        <div class="rounded-bottom-1 px-4" role="button" (click)="isanime()">Movie</div>
+        <h5 class="pointer-event" role="button" (click)="animeboolean = true">anime</h5>
+    </div>
+    <div class="movie-grid">
+        <ng-container *ngIf="!animeboolean">
+            <app-movie-card *ngFor="let movie of movies" [movie]="movie" (click)="ondetail(movie.id,'movie')"></app-movie-card>
+        </ng-container>
+        <ng-container *ngIf="animeboolean">
+            <app-anime-card *ngFor="let anime of anime" [anime]="anime" (click)="ondetail(anime.mal_id,'anime')"></app-anime-card>
+        </ng-container>
+    </div>
+</div>
