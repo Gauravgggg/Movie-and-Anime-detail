@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core';
 import { BrowserModule, provideClientHydration } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -15,6 +15,8 @@ import { MovieDetailComponent } from './components/movie-list/movie-detail/movie
 import { AnimeCardComponent } from './components/anime-card/anime-card.component';
 import { AnimeDetailComponent } from './components/movie-list/anime-detail/anime-detail.component';
 import { SanitizerHtmlPipe } from './pipes/sanitizer-html.pipe';
+import { PopupVideoComponent } from './components/popup-video/popup-video.component';
+import { SvgIconComponent } from 'angular-svg-icon';
 
 @NgModule({
   declarations: [
@@ -22,24 +24,24 @@ import { SanitizerHtmlPipe } from './pipes/sanitizer-html.pipe';
     ComponentsComponent,
     PageComponent,
     HomeComponent,
-    MovieListComponent,
-    MovieCardComponent,
-    MovieDetailComponent,
-    AnimeCardComponent,
     AnimeDetailComponent,
-
+    PopupVideoComponent,
+  
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    SanitizerHtmlPipe
-
-  ],
+    SanitizerHtmlPipe,
+    MovieListComponent
+],
   providers: [
     provideClientHydration(),
     provideHttpClient(),
+  
   ],
+  
+  schemas:[CUSTOM_ELEMENTS_SCHEMA],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

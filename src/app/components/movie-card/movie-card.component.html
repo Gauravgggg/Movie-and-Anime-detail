@@ -1,5 +1,5 @@
 <div class="movie-card">
-    <img [src]="movie.poster_path?'https://image.tmdb.org/t/p/w500' + movie.poster_path:'dummy-image.jpg' " [alt]="movie.title" class="movie-poster" *ngIf="movie.poster_path" />
+    <img [src]="movie.poster_path ? 'https://image.tmdb.org/t/p/w500' + movie.poster_path : 'dummy-image.jpg'" [alt]="movie.title" class="movie-poster"  />
     <div class="movie-info">
         <h3 class="movie-title">{{ movie.title }}</h3>
         <p>Rating: {{ movie.vote_average.toFixed(1) }}/10</p>

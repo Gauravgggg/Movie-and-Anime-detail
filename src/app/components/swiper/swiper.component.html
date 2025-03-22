@@ -1,0 +1,48 @@
+<div class="position-relative">
+    <swiper-container
+    #swiperRef
+    [class]="config.containerClass"
+    [slidesPerView]="config.slidesPerView"
+    [navigation]="config.navigation"
+    [loop]="config.loop"
+    [spaceBetween]="config.spaceBetween"
+    [autoplay]="config.autoplay"
+    [speed]="config.speed"
+    [css-mode]="config.cssMode"
+    [breakpoints]="config.breakpoints">
+   <ng-content></ng-content>
+    </swiper-container>
+
+    <ng-container *ngIf="config?.sideButton">
+        <div
+       
+          class="position-absolute cursor-pointer me-1 sb-prev float-start bg-body-secondary rounded-pill w-2-rem h-2-rem text-center align-content-center z-1 top-50 start-0 translate-middle"
+        >
+          <svg-icon
+            class="cursor-pointer"
+            svgClass=""
+            src="leftarrowicon.svg"
+            [svgStyle]="{
+              'width.rem': 1,
+              'height.rem': 0.8,
+              'stroke-width': 1.2
+            }"
+          ></svg-icon>
+        </div>
+        <div
+         
+          class="position-absolute cursor-pointer mx-1 sb-next bg-body-secondary float-end rounded-pill w-2-rem h-2-rem text-center align-content-center z-1 top-50 start-100 translate-middle"
+        >
+          <svg-icon
+            class="cursor-pointer"
+            svgClass="stroke-white"
+            src="Right_arrow_icon.svg"
+            [svgStyle]="{
+              'width.rem': 1,
+              'height.rem': 0.8,
+              'stroke-width': 1.2
+            }"
+          ></svg-icon>
+        </div>
+      </ng-container>
+</div>

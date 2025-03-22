@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { rejects } from 'node:assert';
 import { error } from 'node:console';
@@ -18,6 +18,18 @@ export class MovieServiceService {
 
   getPopularMovies(): Observable<any> {
     return this.http.get(`${this.baseUrl}/movie/popular?api_key=${this.apiKey}`);
+  } 
+
+  getlatest(){
+    return new Promise((resolve,rejects)=>{
+      this.http.get(`${this.baseUrl}/movie/now_playing?api_key=${this.apiKey}&language=en-US&page=1`).subscribe(
+        (successs)=>{
+          resolve(successs);
+        },(error)=>{
+          rejects(error);
+        }
+      )
+    })
   }
 
   searchMovies(query: string): Observable<any> {
@@ -107,6 +119,15 @@ getTopAnime(page: number = 1) {
   })
 
 }
+
+ validTypes = ["tv", "movie", "ova", "special", "ona", "music", "cm", "pv", "tv_special"];
+
+
+getanimesearch(query:string): Observable<any>{
+  return  this.http.get(`${this.animebaseUrl}/anime?q=${query}&order_by=popularity&sort=asc&sfw=true`);
+ 
+}
+
 
 getanimeDetail(id:number){
   return new Promise((resolve,rejects)=>{

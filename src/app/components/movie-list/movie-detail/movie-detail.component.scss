@@ -23,3 +23,22 @@
     font-size: 1.2rem;
     margin: 5px 0 0;
 }
+
+.youtube:hover{
+    transform: scale(1.05);
+    cursor: pointer;
+}
+
+.youtube .playbutton{
+    width: 67px;
+    height: 67px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    background: rgba(0, 0, 0, .7);
+}
+
+.playback-icon{
+    background-image: url(https://www.themoviedb.org/assets/2/v4/glyphicons/basic/glyphicons-basic-175-play-806cb05551791b8dedd7f8d38fd3bd806e2d397fcfeaa00a5cc9129f0819fd07.svg);
+}

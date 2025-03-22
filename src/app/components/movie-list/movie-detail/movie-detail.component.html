@@ -1,5 +1,5 @@
-<div class="movie-detail container">
-    <div class="backdrop" [style.backgroundImage]="'url(https://image.tmdb.org/t/p/w500'+ moviedetail.image.backdrops[1].file_path + ')'">
+<div class="movie-detail container-fluid">
+    <div class="backdrop" [style.backgroundImage]="'url(https://image.tmdb.org/t/p/w500'+ moviedetail.image.backdrops[0].file_path + ')'">
         <div class="title-overlay">
             <h1>{{ moviedetail.title }}</h1>
             <p>{{ moviedetail.tagline }}</p>
@@ -31,24 +31,24 @@
     </div>
 
 
-    <div class="row">
+    <div class="row" *ngIf="videoshow"> 
         <div class="mt-4">
             <h3 class="fw-bold">Videos </h3>
         </div>
 
-        <div class="col-xl-4 col-sm-12 mt-3 mb-4" *ngFor="let url of sanitizedUrls">
-            <iframe [src]="url" frameborder="0" class="object-fit-cover rounded-1 video" allow="accelerometer; autoplay; clipboard-write; encrypted-media;  gyroscope; picture-in-picture" allowfullscreen></iframe>
+        <div class="col-xl-5 col-sm-12 mt-3 mb-4" *ngFor="let url of sanitizedUrls">
+            <iframe [src]="url" frameborder="0" [width]="450" [height]="300" class="object-fit-cover rounded-2 video" allow="accelerometer; autoplay; clipboard-write; encrypted-media;  gyroscope; picture-in-picture" allowfullscreen></iframe>
         </div>
 
     </div>
 
 
-    <div class="row">
+    <div class="row " *ngIf="castshow">
         <div class="mt-4">
             <h3 class="fw-bold">Cast</h3>
         </div>
 
-        <div class="col-xl-6 col-sm-12 d-flex" *ngFor="let credits of moviedetail.credit['cast']">
+        <!-- <div class="col-xl-6 col-sm-12 d-flex" *ngFor="let credits of moviedetail.credit['cast']">
             <div class="w-25 h-75 border border-4 border-white rounded-top-circle rounded-end-circle bg-danger shadow">
                 <img [src]="credits.profile_path ? 'https://image.tmdb.org/t/p/w500'+credits.profile_path: 'dummy-face.jpg'" class="w-100 h-100 object-fit-cover border- rounded-circle" alt="">
             </div>
@@ -56,9 +56,49 @@
                 <h3>{{credits.name}}</h3>
                 <p class=""><em>{{credits.character}}</em></p>
             </div>
-        </div>
-    </div>
+        </div> -->
+        <!-- <div class="position-relative">
+            <swiper-container  [class]="config.containerClass"
+            [slidesPerView]="config.slidesPerView"
+    [navigation]="config.navigation"
+    [loop]="config.loop"
+    [spaceBetween]="config.spaceBetween"
+    [autoplay]="config.autoplay"
+    [speed]="config.speed"
+    [css-mode]="config.cssMode"
+    [breakpoints]="config.breakpoints">
+    <ng-container
+     *ngFor="let credits of moviedetail.credit['cast']">
+        <swiper-slide >
+            <div class="w-25 h-75 border border-4 border-white rounded-top-circle rounded-end-circle bg-danger shadow">
+                <img [src]="credits.profile_path ? 'https://image.tmdb.org/t/p/w500'+credits.profile_path: 'dummy-face.jpg'" class="w-100 h-100 object-fit-cover border- rounded-circle" alt="">
+            </div>
+            <div class="ps-2 pt-5">
+                <h3>{{credits.name}}</h3>
+                <p class=""><em>{{credits.character}}</em></p>
+            </div>
+        </swiper-slide>
+    </ng-container>
 
+    
+    </swiper-container>
+     
+        </div> -->
+            
+        <app-swiper [config]="config">
+               <swiper-slide  *ngFor="let credits of moviedetail.credit['cast']">
+                   <div class="w-25 h-75 border border-4 border-white rounded-top-circle rounded-end-circle bg-danger shadow">
+                       <img [src]="credits.profile_path ? 'https://image.tmdb.org/t/p/w500'+credits.profile_path: 'dummy-face.jpg'" class="w-100 h-100 object-fit-cover border- rounded-circle" alt="">
+                   </div>
+                   <div class="ps-2 pt-5">
+                       <h3>{{credits.name}}</h3>
+                       <p class=""><em>{{credits.character}}</em></p>
+                   </div>
+               </swiper-slide>
+            
+        </app-swiper>
+        
+    </div>
 </div>
 <!--<div class="container">
     <div class="row m-0">
