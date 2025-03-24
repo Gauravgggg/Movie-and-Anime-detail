@@ -19,7 +19,6 @@ import { SanitizerHtmlPipe } from './pipes/sanitizer-html.pipe';
 @NgModule({
   declarations: [
     AppComponent,
-    ComponentsComponent,
     PageComponent,
     HomeComponent,
     MovieListComponent,
